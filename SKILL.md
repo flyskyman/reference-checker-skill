@@ -58,22 +58,7 @@ The audit table must include enough bibliographic information for the user to id
 
 For each reference:
 
-1. Parse the submitted reference into structured fields:
-   - reference number
-   - authors
-   - original title
-   - translated title, if present
-   - source / journal / book / conference / institution / issuing body
-   - year
-   - volume
-   - issue
-   - pages or article number
-   - DOI
-   - PMID / PMCID, if present
-   - ISBN, if present
-   - dissertation institution and degree type, if present
-   - standard number, if present
-   - URL and access date, if present
+1. Parse the submitted reference into the fields listed under "Required Data Fields for Each Reference".
 
 2. Identify the source language and source type:
    - English-language journal article
@@ -109,7 +94,6 @@ For each reference:
    - For Chinese books, search by Chinese title + author/editor + publisher + ISBN using publisher catalogues, National Library records, university library catalogues, or ISBN databases.
    - For Chinese standards, policies, laws, and regulations, search by standard number / document number / issuing authority using official government, standards, ministry, or institutional websites.
    - If DOI is included in a Chinese reference, check it only as a supplementary consistency check after the Chinese-title/source route, unless the target journal explicitly requires DOI verification.
-   - Do not mark a Chinese reference as Major merely because DOI is absent.
 
 4. DOI handling rules.
    - For English-language or international journal articles, verify DOI metadata first when DOI is provided.
@@ -123,19 +107,7 @@ For each reference:
    - For general English scholarly references, prefer Crossref, publisher pages, official journal pages, institutional repositories, or library catalogues.
    - For Chinese references, first vary Chinese-title searches by removing punctuation, adding first author, adding journal/source, adding year, or trying simplified/traditional variants. Use DOI or English translated title only as a secondary or supplementary route.
 
-6. Compare submitted metadata against verified metadata:
-   - title wording
-   - translated title, if present
-   - authors
-   - journal/source
-   - year
-   - volume
-   - issue
-   - pages/article number
-   - DOI
-   - PMID/PMCID
-   - Chinese database traceability
-   - ISBN / standard number / document number
+6. Compare every extracted field against the verified record, including the Chinese database trace and any identifier (DOI, PMID/PMCID, ISBN, standard or document number).
 
 7. Assign a match quality:
    - Exact: all key identity fields match.
@@ -385,21 +357,11 @@ Rules for the table:
 
 ## Per-Round Closing Requirement
 
-At the end of every response, state exactly which reference numbers were checked in this round.
-
-If references remain unchecked, end with a continuation prompt:
-
-"This round checked references X–Y. References Z–N remain unchecked. Would you like me to continue with the next round, references Z–...?"
-
-Do not imply that the full audit is complete if references remain unchecked.
+End every round by stating which reference numbers were checked and, if any remain, which ones and that the audit is not complete; offer to continue with the next range.
 
 ## Final Completion Requirement
 
-When all references have been checked, state clearly:
-
-"Reference audit complete."
-
-Then provide a cumulative summary of all problematic references found across the entire audit, grouped by severity:
+When all references have been checked, say so, then provide a cumulative summary of all problematic references found across the entire audit, grouped by severity:
 
 ### Critical Problems
 | Ref | Title | Authors | Source / Journal | Problem | Suggested Action |
@@ -426,7 +388,7 @@ For Chinese references, prefer clear Chinese wording in the issue/fix column. Pr
 - Do not invent DOI, PMID, PMCID, CNKI identifiers, Wanfang identifiers, VIP identifiers, ISBNs, page numbers, authors, journal names, or official document numbers.
 - Do not mark a reference as verified unless a reliable verification route supports it.
 - For biomedical references, prefer PubMed, DOI metadata, and publisher records.
-- For Chinese-language references, prefer Chinese-title-first verification through CNKI, Wanfang, VIP, official journal pages, university repositories, publisher catalogues, official standards platforms, official government websites, and CNIPA depending on source type. DOI is supplementary and optional unless explicitly required.
+- For Chinese-language references, prefer Chinese-title-first verification through CNKI, Wanfang, VIP, official journal pages, university repositories, publisher catalogues, official standards platforms, official government websites, and CNIPA depending on source type.
 - Distinguish article numbers from page ranges.
 - Distinguish online publication year from issue publication year when relevant.
 - Distinguish Chinese original titles from English translated titles.
