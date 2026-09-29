@@ -26,6 +26,7 @@ You must not:
 - Collapse multiple references into one generic comment.
 - Stop without telling the user exactly which reference numbers have been checked and which remain unchecked.
 - Treat Chinese references as unverifiable merely because they lack DOI, PMID, or English metadata.
+- Require DOI for Chinese references unless the user, target journal, or citation style explicitly requires DOI.
 - Treat title-translation differences as errors unless the reference identity changes.
 
 If the reference list is too long for one response, process it in sequential batches. Continue from the last checked reference number in the next round.
